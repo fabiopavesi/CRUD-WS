@@ -2,11 +2,11 @@
   "name": "CRUD-WS",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/test.js",
+  "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd src && tsc",
-    "start": "cd lib && node test"
+    "start": "cd src && node test"
   },
   "keywords": [],
   "author": "Fabio Pavesi <fabio@adamassoft.it>",
