@@ -2,6 +2,6 @@ import {$log} from "ts-log-debug";
 $log.level = "debug";
 $log.name = "APP";
 
-export const log = $log
+export {$log as log}
 
 $log.debug("Some debug messages");

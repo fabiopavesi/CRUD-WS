@@ -2,8 +2,8 @@ import {Router} from 'express';
 import {Entity} from '../entity/entity';
 import {CRUDRoute} from './crud-route';
 import {log} from '../logger/logger';
-import {CrudProxyRoute} from './c-r-u-d-proxy-route';
 import bodyParser = require('body-parser');
+import {CRUDProxyRoute} from './crud-proxy-route';
 
 
 const express = require('express')
@@ -31,7 +31,7 @@ export class ExpressServer {
 	}
 
 	addCrudProxyRoute(path: string, baseUrl: string) {
-		const crudRoute = new CrudProxyRoute(this.app, path, baseUrl)
+		const crudRoute = new CRUDProxyRoute(this.app, path, baseUrl)
 	}
 
 }

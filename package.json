@@ -1,16 +1,24 @@
 {
-  "name": "CRUD-WS",
+  "name": "crud-ws",
   "version": "0.0.1",
   "description": "",
-  "main": "test.js",
+  "main": "examples/example1.js",
+  "types": "dist/index.ts.d",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd src && tsc",
     "start": "cd src && node test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiopavesi/CRUD-WS"
+  },
   "keywords": [],
-  "author": "Fabio Pavesi <fabio@adamassoft.it>",
-  "license": "ISC",
+  "author": "Fabio Pavesi <fabio@adamassoft.it> (https://adamassoft.it)",
+  "license": "GPLv3",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "@types/express": "4.16.1",
     "@types/node": "10.12.21",

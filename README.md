@@ -7,6 +7,10 @@ In particular it makes development of *back line* CRUD API's easy.
 *Entity* and *EntityFactory* are defined as interfaces, so as to be able to plug in additional implementations.
 For the time being the only implementation is MongoDB.
 
+## Installation
+
+``npm i crud-ws``
+
 ## CRUD Routes
 Creating the easiest server is as easy as:
 ```typescript
