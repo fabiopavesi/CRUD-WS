@@ -8,10 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const MongoEntityFactory_1 = require("./entity/MongoEntityFactory");
+const MongoEntityFactory_1 = require("../entity/mongo/MongoEntityFactory");
 const express = require("express");
-const server_1 = require("./express/server");
-const logger_1 = require("./logger/logger");
+const server_1 = require("../express/server");
+const logger_1 = require("../logger/logger");
 logger_1.log.info('Hello there');
 const router = express.Router();
 router.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -31,4 +31,4 @@ if (entity) {
 else {
     logger_1.log.error('no entity');
 }
-//# sourceMappingURL=test.js.map
+//# sourceMappingURL=example1.js.map

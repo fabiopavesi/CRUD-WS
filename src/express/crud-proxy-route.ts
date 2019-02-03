@@ -2,7 +2,7 @@ import {Entity} from '../entity/entity';
 import {log} from '../logger/logger';
 import * as request from 'request'
 
-export class ProxyCRUDRoute {
+export class CRUDProxyRoute {
 	constructor(private app, private path: string, private baseUrl: string) {
 
 		this.app.get(`${path}/`, (req, res, next) => this.get(req, res, next))

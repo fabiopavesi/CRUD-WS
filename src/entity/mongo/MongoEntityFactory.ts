@@ -1,4 +1,4 @@
-import {EntityFactory} from './entity-factory';
+import {EntityFactory} from '../entity-factory';
 import {MongoEntity} from './mongo-entity';
 
 export class MongoEntityFactory implements EntityFactory {

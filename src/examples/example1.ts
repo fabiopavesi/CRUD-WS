@@ -1,9 +1,10 @@
-import {MongoEntityFactory} from './entity/MongoEntityFactory';
+import {MongoEntityFactory} from '../entity/mongo/MongoEntityFactory';
 
 import express = require('express');
-import {ExpressServer} from './express/server';
-import {MongoEntity} from './entity/mongo-entity';
-import {log} from './logger/logger';
+import {ExpressServer} from '../express/server';
+import {MongoEntity} from '../entity/mongo/mongo-entity';
+import {log} from '../logger/logger';
+import {Entity} from '../entity/entity';
 
 log.info('Hello there')
 
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
 })
 
 const entityFactory = new MongoEntityFactory('mongodb://localhost:27017', 'test')
-const entity: MongoEntity = entityFactory.createEntityController('pippo')
+const entity: Entity = entityFactory.createEntityController('pippo')
 
 if (entity) {
 	const server = new ExpressServer(3000)

@@ -1,5 +1,5 @@
-import {Entity} from './entity';
-import {log} from '../logger/logger';
+import {Entity} from '../entity';
+import {log} from '../../logger/logger';
 
 export class MongoEntity implements Entity {
 	private client
