@@ -22,8 +22,9 @@ const entity: Entity = entityFactory.createEntityController('pippo')
 if (entity) {
 	const server = new ExpressServer(3000)
 	server.addRoute('/rest', router)
-	server.addCrudRoute('/pippo', entity)
-	server.addCrudProxyRoute('/files', 'https://sitechar.adamassoft.it/rest')
+	server.addCrudRoute('/pippo/files', entity)
+	const server2 = new ExpressServer(3001)
+	server2.addCrudProxyRoute('/files', 'http://localhost:3000/pippo')
 
 } else {
 	log.error('no entity')
