@@ -15,8 +15,8 @@ export class CRUDProxyRoute {
 
 	async get(req, res, next) {
 		try {
-			log.debug('requesting', `${this.baseUrl}/${this.path}`)
-			request.get(`${this.baseUrl}${this.path}`, req.headers).pipe(res).on('error', (error) => {
+			log.debug('requesting', `${this.baseUrl}`)
+			request.get(`${this.baseUrl}`, req.headers).pipe(res).on('error', (error) => {
 				log.error(error)
 			})
 		} catch (e) {
@@ -33,7 +33,7 @@ export class CRUDProxyRoute {
 	async getOne(req, res, next) {
 		try {
 			log.debug(`getOne ${req.params.id}`)
-			request.get(`${this.baseUrl}${this.path}/${req.params.id}`, req.headers).pipe(res)
+			request.get(`${this.baseUrl}/${req.params.id}`, req.headers).pipe(res)
 		} catch (e) {
 			log.error(e)
 			res.status(500).json({
@@ -49,7 +49,7 @@ export class CRUDProxyRoute {
 	async filter(req, res, next) {
 		try {
 			log.debug('filtering on', req.body)
-			request.post(`${this.baseUrl}${this.path}/filter`, req.body, req.headers).pipe(res)
+			request.post(`${this.baseUrl}/filter`, req.body, req.headers).pipe(res)
 		} catch (e) {
 			log.error(e)
 			res.status(500).json({
@@ -66,7 +66,7 @@ export class CRUDProxyRoute {
 		try {
 			// $log.info('data', data)
 			const data = req.body
-			request.post(`${this.baseUrl}${this.path}`, data, req.headers).pipe(res)
+			request.post(`${this.baseUrl}`, data, req.headers).pipe(res)
 		} catch (e) {
 			log.error(e)
 			res.status(500).json({
@@ -83,7 +83,7 @@ export class CRUDProxyRoute {
 
 		try {
 			// $log.info('data', data)
-			request.put(`${this.baseUrl}${this.path}`, data, req.headers).pipe(res)
+			request.put(`${this.baseUrl}`, data, req.headers).pipe(res)
 		} catch (e) {
 			log.error(e)
 			res.status(500).json({
@@ -99,7 +99,7 @@ export class CRUDProxyRoute {
 		try {
 			// $log.info('data', data)
 			const id = req.params.id
-			request.post(`${this.baseUrl}${this.path}/${id}`, req.headers).pipe(res)
+			request.post(`${this.baseUrl}/${id}`, req.headers).pipe(res)
 		} catch (e) {
 			log.error(e)
 			res.status(500).json({

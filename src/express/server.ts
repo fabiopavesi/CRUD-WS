@@ -11,14 +11,21 @@ const express = require('express')
 export class ExpressServer {
 	private app = express()
 
-	constructor(port: number) {
+	constructor(private port: number) {
 		this.app.use((req, res, next) => {
 			log.debug(`${req.method} ${req.path}`)
 			next()
 		})
 		this.app.use(bodyParser.json())
-		this.app.listen(port, () => {
-			log.info(`Server listening on port ${port}`)
+	}
+
+	addMiddleware(middleware: (req, res, next?) => void) {
+		this.app.use(middleware)
+	}
+
+	listen() {
+		this.app.listen(this.port, () => {
+			log.info(`Server listening on port ${this.port}`)
 		})
 	}
 
