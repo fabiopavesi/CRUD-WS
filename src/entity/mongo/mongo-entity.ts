@@ -122,4 +122,18 @@ export class MongoEntity implements Entity {
 		}
 	}
 
+	async insertMany(values: any[]): Promise<any> {
+		try {
+			const db: any = await this.connect()
+			const results = await db.collection(this.collection)
+				.insertMany(values)
+			this.close()
+			return results;
+		} catch (err) {
+			log.error('error', err)
+			this.close()
+			throw err
+		}
+	}
+
 }
