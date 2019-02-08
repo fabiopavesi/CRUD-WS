@@ -3,6 +3,7 @@ export interface Entity {
 	find(criteria: any): Promise<any>
 	findOne(criteria: any): Promise<any>
 	update(value: any): Promise<any>
-	delete(id: string): Promise<any>
+	deleteOne(id: string): Promise<any>
+	delete(criteria: any): Promise<any>
 }
 

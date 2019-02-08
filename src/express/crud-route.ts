@@ -12,7 +12,8 @@ export class CRUDRoute {
 		this.app.post(`${path}/filter`, (req, res, next) => this.filter(req, res, next))
 		this.app.post(`${path}/`, (req, res, next) => this.add(req, res, next))
 		this.app.put(`${path}/`, (req, res, next) => this.change(req, res, next))
-		this.app.delete(`${path}/:id`, (req, res, next) => this.delete(req, res, next))
+		this.app.delete(`${path}`, (req, res, next) => this.delete(req, res, next))
+		this.app.delete(`${path}/:id`, (req, res, next) => this.deleteOne(req, res, next))
 	}
 
 	async get(req, res, next) {
@@ -84,11 +85,27 @@ export class CRUDRoute {
 		return null
 	}
 
-	async delete(req, res, next) {
+	async deleteOne(req, res, next) {
 		try {
 			// $log.info('data', data)
 			const id = req.params.id
-			const retVal = await this.entity.delete(id)
+			const retVal = await this.entity.deleteOne(id)
+			res.json(retVal)
+		} catch (e) {
+			log.error(e)
+			res.status(500).json({
+				status: 500,
+				error: e
+			})
+		}
+		return null
+	}
+
+	async delete(req, res, next) {
+		try {
+			// $log.info('data', data)
+			const criteria = req.body
+			const retVal = await this.entity.delete(criteria)
 			res.json(retVal)
 		} catch (e) {
 			log.error(e)

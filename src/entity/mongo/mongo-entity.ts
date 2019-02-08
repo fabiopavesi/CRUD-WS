@@ -92,11 +92,27 @@ export class MongoEntity implements Entity {
 		}
 	}
 
-	async delete(id: string): Promise<any> {
+	async deleteOne(id: string): Promise<any> {
 		try {
 			const db: any = await this.connect()
 			const results = await db.collection(this.collection)
 				.removeOne({_id: id})
+			this.close()
+			return results;
+		} catch (err) {
+			log.error('error', err)
+			this.close()
+			throw err
+		}
+	}
+
+	async delete(criteria: any): Promise<any> {
+		try {
+			const db: any = await this.connect()
+			const results = await db.collection(this.collection)
+				.remove(criteria, {
+					justOne: false
+				})
 			this.close()
 			return results;
 		} catch (err) {
