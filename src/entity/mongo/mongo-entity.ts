@@ -130,7 +130,7 @@ export class MongoEntity implements Entity {
 			this.close()
 			return results;
 		} catch (err) {
-			log.error('error', err)
+			log.error('error', JSON.stringify(err, null, 4))
 			this.close()
 			throw err
 		}
